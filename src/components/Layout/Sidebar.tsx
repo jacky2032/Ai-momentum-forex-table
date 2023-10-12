@@ -47,17 +47,20 @@ const Layout = () => {
     setSelectedCurrencies((prev) => {
       const { value, checked } = e.target;
       if (checked) return [...prev, value];
-      const index = prev.findIndex((symbol) => symbol === value);
-      return prev.splice(index, 1);
+      const newArray = [...prev];
+      const index = newArray.findIndex((symbol) => symbol === value);
+      newArray.splice(index, 1);
+      return newArray;
     });
   };
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const result = Object.entries(symbolResult).filter(([label]) => {
+      const result = Object.entries(symbolResult).filter(([, label]) => {
         return new RegExp(`${filter}`, "i").test(label);
       });
+
       setFilterList(result);
-    }, 2000);
+    }, 1000);
     return () => {
       clearTimeout(timeout);
     };

@@ -15,9 +15,13 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [baseCurrency, setBaseCurrency] = useState<string>(
     DEFAULT_CONFIG.baseCurrency
   );
-  const [latestApiState, latestResult] = useGetLatest(
+  const [filter, setFilter] = useState({
     baseCurrency,
-    selectedCurrencies.join(",")
+    selectedCurrencies,
+  });
+  const [latestApiState, latestResult] = useGetLatest(
+    filter.baseCurrency,
+    filter.selectedCurrencies.join(",")
   );
   const [symbolApiState, symbolResult] = useGetSymbols();
 
@@ -41,6 +45,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
           setSelectedCurrencies,
           latestResult,
           symbolResult,
+          setFilter,
         }}
       >
         {children}
