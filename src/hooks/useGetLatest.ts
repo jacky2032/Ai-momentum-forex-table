@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { ApiState } from "@/enums";
 
 const URL = import.meta.env.VITE_FOREX_LATEST_URL;

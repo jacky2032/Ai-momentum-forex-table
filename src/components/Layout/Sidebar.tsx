@@ -53,7 +53,7 @@ const Layout = () => {
   };
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const result = Object.entries(symbolResult).filter(([symbol, label]) => {
+      const result = Object.entries(symbolResult).filter(([label]) => {
         return new RegExp(`${filter}`, "i").test(label);
       });
       setFilterList(result);
