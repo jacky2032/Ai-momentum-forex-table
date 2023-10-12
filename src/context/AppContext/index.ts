@@ -7,7 +7,12 @@ export interface IAppContext {
   setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
   latestResult: Record<string, number>;
   symbolResult: Record<string, string>;
-  setFilter: Dispatch<SetStateAction<Record<string, any>>>;
+  setFilter: Dispatch<
+    SetStateAction<{
+      baseCurrency: string;
+      selectedCurrencies: string[];
+    }>
+  >;
 }
 
 const AppContext = createContext<IAppContext>({
